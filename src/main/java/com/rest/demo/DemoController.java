@@ -12,17 +12,29 @@ public class DemoController {
 
     @RequestMapping("/")
     public List<Customer> getCustomer(){
+
+        return repo.findAll();
+    }
+
+    @RequestMapping("/load")
+    public List<Customer> loadCustomer(){
+
         List<Customer> customers = List.of(
                 new Customer(1L, "pradeepa"),
                 new Customer(2L, "Raksha"),
                 new Customer(3L, "Remi")
         );
+
         return repo.saveAll(customers);
     }
+
     @RequestMapping("/add")
     public List<Customer> addCustomer(){
-        Customer c=new Customer(4L,"Divya");
-                repo.save(c);
-                return repo.findAll();
+
+        Customer c = new Customer(4L,"Divya");
+
+        repo.save(c);
+
+        return repo.findAll();
     }
 }
